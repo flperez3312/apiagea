@@ -1,11 +1,18 @@
 __AGEA INGESTA API PROJECT__
+
+
+
 1 *API_Ingesta es un proyecto que se ira escalando una vez que este aprobados los cambios desde la rama develop; para hacer pruebas intenta esto en bash/terminal*:
+
 >git clone https://github.com/flperez3312/apiagea.git
+>
 >cd apiagea
+>
 >pip install virtualenv(si ya lo tenes no lo agregues...)
+>
 >pip install -r requirements
 
-2*Recorda modificar tu archivo config con los datos de tu HOSTNAME Y ROOT*
+2 *Recorda modificar tu archivo config con los datos de tu HOSTNAME Y ROOT*
 
 ```JSON
 URL = 'HOSTNAME'
@@ -13,7 +20,7 @@ ROOT ='USERNAME'
 ```
 
 ### *Test para crear archivos nuevos*
-- **POST <hostname>/apiagea/v1/hdfs_files**
+- *POST <hostname>/apiagea/v1/hdfs_files*
 - Content-Type: application/json
 ```JSON
 {
@@ -22,7 +29,8 @@ ROOT ='USERNAME'
     
 }
 ```
--**response**
+- *response*
+        
 ```JSON
 {
     "result": "Archivo creado correctamente",
@@ -30,8 +38,10 @@ ROOT ='USERNAME'
     
 }
 ```
-**errors**
---path error
+- *errors*
+        
+- path error
+        
 ```JSON
 {
     "result": "error path invalido",
@@ -39,7 +49,8 @@ ROOT ='USERNAME'
     
 }
 ```
---ejemplo  error en key 'data'
+- ejemplo  error en key 'data'
+        
 ```JSON
 {
     "result": "no se pudo crear el archivo, error: 'int' object is not iterable ",
@@ -47,13 +58,14 @@ ROOT ='USERNAME'
     
 }
 ```
-**la api valida y captura los errors mostrando una respuesta status false con el estado del error**
+        
+### la api valida y captura los errors mostrando una respuesta status false con el estado del error
 
 
-__Script de prueba pegarle a la api que ingesta en archivos nuevos al directorio(este es un ejemplo y se puede hacer de muchas maneras)__
+- Script de prueba pegarle a la api que ingesta en archivos nuevos al directorio(este es un ejemplo y se puede hacer de muchas maneras) 
  
       
-´´
+´´´
 
 _executor = ThreadPoolExecutor(1)
 
@@ -81,8 +93,10 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(fetch_data())
 loop.close()
 
-´´
+´´´
+        
 **Copia archivos de ti directorio a el cluster**
+        
       
 _**POST <hostname>/apiagea/v1/hdfs_from_local**
       
