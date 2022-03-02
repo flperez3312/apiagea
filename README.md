@@ -118,11 +118,33 @@ loop.close()
 }
 ```
 
+**Ver contenido de un archivo
+- *GET {HOSTNAME}/apiagea/v1/hdfs_file/{NOMBRE_DEL_ARCHIVO_CON_EXTENSION}*
 
-- *GET {HOSTNAME}
+*response*
 
+```JSON
+{
+    "result": "CONTENIDO DEL ARCHIVO",
+    "status": true
+    
+}
+```
       
       
+ **Eliminar un archivo
+- *DELETE {HOSTNAME}/apiagea/v1/hdfs_file/{NOMBRE_DEL_ARCHIVO_CON_EXTENSION}*
+
+*response*
+
+```JSON
+{
+    "result": "Archivo eliminado",
+    "status": true
+    
+}
+```
+    
 
 
   
