@@ -1,11 +1,11 @@
 __AGEA INGESTA API PROJECT__
-1 *API_Ingesta es un proyecto que se ira escalando una vez que este aprobados los cambios desde la rama develop; para hacer pruebas intenta esto en bash/terminal*:
+1_**API_Ingesta es un proyecto que se ira escalando una vez que este aprobados los cambios desde la rama develop; para hacer pruebas intenta esto en bash/terminal**:
 **git clone https://github.com/flperez3312/apiagea.git**
 **cd apiagea**
 **pip install virtualenv(si ya lo tenes no lo agregues...)**
 **pip install -r requirements**
 
-2 *Recorda modificar tu archivo config con los datos de tu HOSTNAME Y ROOT*
+2**Recorda modificar tu archivo config con los datos de tu HOSTNAME Y ROOT**
 
 ```JSON
 URL = 'HOSTNAME'
@@ -13,8 +13,8 @@ ROOT ='USERNAME'
 ```
 
 **Test para crear archivos nuevos**
-- **POST <hostname>/apiagea/v1/hdfs_files**
-- Content-Type: application/json
+**POST <hostname>/apiagea/v1/hdfs_files**
+-Content-Type: application/json
 ```JSON
 {
     "path": "/user/<tu nombre>/<nombre del archivo con extension",
