@@ -19,7 +19,7 @@ URL = 'HOSTNAME'
 ROOT ='USERNAME'
 ```
 
-### *Test para crear archivos nuevos*
+### Test para crear archivos nuevos
 - *POST {HOSTNAME}/apiagea/v1/hdfs_files*
 - Content-Type: application/json
 ```JSON
@@ -118,7 +118,7 @@ loop.close()
 }
 ```
 
-**Ver contenido de un archivo
+**Ver contenido de un archivo**
 - *GET {HOSTNAME}/apiagea/v1/hdfs_file/{NOMBRE_DEL_ARCHIVO_CON_EXTENSION}*
 
 *response*
@@ -132,7 +132,7 @@ loop.close()
 ```
       
       
- **Eliminar un archivo
+ **Eliminar un archivo**
 - *DELETE {HOSTNAME}/apiagea/v1/hdfs_file/{NOMBRE_DEL_ARCHIVO_CON_EXTENSION}*
 
 *response*
