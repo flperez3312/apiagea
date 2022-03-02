@@ -20,7 +20,7 @@ ROOT ='USERNAME'
 ```
 
 ### *Test para crear archivos nuevos*
-- *POST <hostname>/apiagea/v1/hdfs_files*
+- *POST {hostname}/apiagea/v1/hdfs_files*
 - Content-Type: application/json
 ```JSON
 {
@@ -29,7 +29,7 @@ ROOT ='USERNAME'
     
 }
 ```
-- *response*
+*response*
         
 ```JSON
 {
@@ -38,7 +38,7 @@ ROOT ='USERNAME'
     
 }
 ```
-- *errors*
+*errors*
         
 - path error
         
@@ -49,7 +49,7 @@ ROOT ='USERNAME'
     
 }
 ```
-- ejemplo  error en key 'data'
+*ejemplo  error en key 'data'*
         
 ```JSON
 {
