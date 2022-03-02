@@ -27,13 +27,18 @@ if __name__ == '__main__':
     
     #print(cliente.list_dir_files("/user/fperez/"))
     #print(cliente.read_file('/user/fperez/'))
+    
+    """
+    
     if hdfss.list_dir_files('/user/fperez'):
         
         print("Existe")
     else:
 
-        print(hdfss.list_dir_files('/user/user/fperez'))
+        print(hdfss.list_dir_files('/user/fperez'))
     
+
+    """
 
     
     #print(cliente.list_files())
