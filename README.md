@@ -65,7 +65,7 @@ ROOT ='USERNAME'
 - Script de prueba pegarle a la api que ingesta en archivos nuevos al directorio(este es un ejemplo y se puede hacer de muchas maneras) 
  
       
-´´´
+´´´PYTHON
 
 _executor = ThreadPoolExecutor(1)
 
