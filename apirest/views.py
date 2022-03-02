@@ -11,20 +11,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 logging.basicConfig(level=logging.INFO)
-
-
+hdfs = dfs.HdfsAdapter(URL, ROOT)
 @csrf_exempt
 def set_hdfs(request):
   
-    
     if request.method == 'POST':
         
         data = request.body
         stream = io.BytesIO(data)
         dataparse = JSONParser().parse(stream)
-        hdfs = dfs.HdfsAdapter(URL, ROOT)
-      
-
+        
         try:
            
             regex = r"^/user/[a-zA-Z0-9]{1,}/[a-zA-Z0-9]{1,}[.](txt|csv|json|xml|html|xlsx|xlsdocx|doc|pptx|ppt|pdf|gz|zip|tar|tgz|tbz|avro|orc|parquet|csv|db){1,}$"
@@ -59,13 +55,12 @@ def set_hdfs(request):
 
 @csrf_exempt
 def upload_files(request):
+    
     if request.method == 'POST':
         data = request.body
-     
         
         stream = io.BytesIO(data)
-        dataparse = JSONParser().parse(stream)
-        hdfs = dfs.HdfsAdapter(URL, ROOT)
+        dataparse = JSONParser().parse(stream)   
         local_path = dataparse['local_path']
         hdfs_path = dataparse['hdfs_path']
         try:
@@ -82,15 +77,14 @@ def upload_files(request):
         return JsonResponse({"result":f"{request.method} no es un metodo valido,  probar con POST","status":False}, status=400, safe=False)
 
 @csrf_exempt
-def hdfs_files(request,filename):
+def hdfs_get_files(request,filename):
    
-
     if request.method == 'GET':
-        hdfs = dfs.HdfsAdapter(URL, ROOT)
+        
         file_content = None
         try:
-            if hdfs.file_exists(filename):
-                with hdfs.read_file(f'/user/fperez{filename}') as f:
+            if hdfs.file_exists(f'/user/fperez/{filename}'):
+                with hdfs.read_file(f'/user/fperez/{filename}') as f:
                     for line in f:
                         print(line)
                         file_content = str(line.decode('utf-8'))
@@ -105,9 +99,9 @@ def hdfs_files(request,filename):
     
     
     if request.method == 'DELETE':
-        hdfs = dfs.HdfsAdapter(URL, ROOT)
+        
         try:
-            if hdfs.file_exists(f'/user/fperez{filename}'):
+            if hdfs.file_exists(f'/user/fperez/{filename}'):
                 hdfs.delete_file(f'/user/fperez/{filename}')
                 return JsonResponse({"result":"Archivo eliminado correctamente","status":True}, status=200, content_type="application/json",safe=False)
             else:
