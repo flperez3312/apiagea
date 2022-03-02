@@ -2,7 +2,7 @@ __AGEA INGESTA API PROJECT__
 
 
 
-1 *API_Ingesta es un proyecto que se ira escalando aprobando  los pull request desde la rama develop; para realizar  pruebas intenta esto en bash/terminal*:
+1 *API_Ingesta es un proyecto que se ira escalando ; para realizar  pruebas intenta esto en bash/terminal*:
 
 >git clone https://github.com/flperez3312/apiagea.git
 >
