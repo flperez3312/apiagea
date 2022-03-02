@@ -2,7 +2,7 @@ __AGEA INGESTA API PROJECT__
 
 
 
-1 *API_Ingesta es un proyecto que se ira escalando una vez que este aprobados los cambios desde la rama develop; para hacer pruebas intenta esto en bash/terminal*:
+1 *API_Ingesta es un proyecto que se ira escalando aprobando  los pull request desde la rama develop; para realizar  pruebas intenta esto en bash/terminal*:
 
 >git clone https://github.com/flperez3312/apiagea.git
 >
@@ -20,11 +20,11 @@ ROOT ='USERNAME'
 ```
 
 ### *Test para crear archivos nuevos*
-- *POST {hostname}/apiagea/v1/hdfs_files*
+- *POST {HOSTNAME}/apiagea/v1/hdfs_files*
 - Content-Type: application/json
 ```JSON
 {
-    "path": "/user/<tu nombre>/<nombre del archivo con extension",
+    "path": "/user/{usuario}/{nombre del archivo con extension}",
     "data": "contenido del archivo puede ser texto json, etc"
     
 }
@@ -34,7 +34,7 @@ ROOT ='USERNAME'
 ```JSON
 {
     "result": "Archivo creado correctamente",
-    "status": "true"
+    "status": true
     
 }
 ```
@@ -45,7 +45,7 @@ ROOT ='USERNAME'
 ```JSON
 {
     "result": "error path invalido",
-    "status": "false"
+    "status": false
     
 }
 ```
@@ -54,7 +54,7 @@ ROOT ='USERNAME'
 ```JSON
 {
     "result": "no se pudo crear el archivo, error: 'int' object is not iterable ",
-    "status": "false"
+    "status": false
     
 }
 ```
@@ -62,8 +62,7 @@ ROOT ='USERNAME'
 ### la api valida y captura los errors mostrando una respuesta status false con el estado del error
 
 
-- Script de prueba pegarle a la api que ingesta en archivos nuevos al directorio(este es un ejemplo y se puede hacer de muchas maneras) 
- 
+- ejemplo de un script  en python  para crear archivos....
       
 ```PYTHON
 
@@ -79,10 +78,10 @@ def sync_blocking():
 
 async def fetch_data():
     print('start fetching')
-    url = '<hostname>/apiagea/v1/hdfs_files'
+    url = '{HOSTNAME}/apiagea/v1/hdfs_files'
     headers = {'Content-Type': 'application/json'}
     for i in range(100, 120):
-        data = {'path': f'/user/<usuario>/test{str(i)}file.txt' , 'data': f'test_file{str(i)}.txt'}
+        data = {'path': f'/user/{usuario}/test{str(i)}file.txt' , 'data': f'test_file{str(i)}.txt'}
         await loop.run_in_executor(_executor, sync_blocking)
         res = requests.post(url, data=json.dumps(data), headers=headers)
         print(res.status_code)
@@ -98,7 +97,30 @@ loop.close()
 **Copia archivos de ti directorio a el cluster**
         
       
-_**POST <hostname>/apiagea/v1/hdfs_from_local**
+- *POST {HOSTNAME}/apiagea/v1/hdfs_from_local*
+
+- Content-Type: application/json
+```JSON
+{
+    "local_path": "{ruta de tu archivo local:ejemplo:(c:/Users/usuario/documentos/archivoprueba.txt)}",
+    "hdfs_path": "/user/{tu usuario}"
+    
+}
+```
+
+*response*
+
+```JSON
+{
+    "result": "Archivo creado correctamente",
+    "status": true
+    
+}
+```
+
+
+- *GET {HOSTNAME}
+
       
       
 
